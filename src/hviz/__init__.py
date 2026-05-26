@@ -1,5 +1,6 @@
 """Quaternion activation visualization with HoloViews, Bokeh, and Plotly."""
 
+from ._activations import quaternion_tanh
 from ._color import domain_color, get_srgb1, phase_color
 from ._plot import (
     AxisRange,
@@ -42,6 +43,7 @@ __all__ = [
     "plot_surface",
     "quaternion_norm",
     "quaternion_slice",
+    "quaternion_tanh",
     "sample_re_im_norm",
     "sample_slice",
     "save",

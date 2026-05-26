@@ -34,7 +34,7 @@ hviz.save(plot, "identity_slice.html")
 - `hviz.plot_components(function, ...)` returns a four-panel Bokeh layout for
   `Re(f(q))`, `i(f(q))`, `j(f(q))`, and `k(f(q))`.
 - `hviz.plot_magnitude_phase(function, real_range, imag_norm_range)` follows the
-  quaternion-activation visualization used by Pöppelbaum and Schwung: input is
+  quaternion-activation visualization used by Poeppelbaum and Schwung: input is
   reduced to `Re(q)` and `||Im(q)||`, then output magnitude and phase are shown
   as 2D Bokeh panels.
 - `hviz.plot_surface(function, real_range, imag_norm_range)` returns a
@@ -44,21 +44,33 @@ The `Re(q)`/`||Im(q)||` view is not a full four-dimensional plot. It is a
 deliberate diagnostic slice. The imaginary direction defaults to
 `(i + j + k) / sqrt(3)` and can be changed with `imag_axis`.
 
-## Identity Demos
+## Example Gallery
 
 Generated with:
 
 ```console
-python examples/identity.py
+python examples/gallery.py
 ```
+
+### Identity: `q`
 
 | Slice domain coloring | Component panels |
 | --- | --- |
-| ![Quaternion identity slice domain coloring](docs/images/identity-slice.png) | ![Quaternion identity component panels](docs/images/identity-components.png) |
+| ![Quaternion identity slice domain coloring](docs/images/identity-slice.png)<br>Hue is output phase on the selected slice; brightness and rings show output norm. | ![Quaternion identity component panels](docs/images/identity-components.png)<br>Each panel is one output component; blue is negative, white is zero, red is positive. |
 
 | Magnitude and phase | 3D magnitude surface |
 | --- | --- |
-| ![Quaternion identity magnitude and phase panels](docs/images/identity-magnitude-phase.png) | ![Quaternion identity magnitude surface](docs/images/identity-surface.png) |
+| ![Quaternion identity magnitude and phase panels](docs/images/identity-magnitude-phase.png)<br>Left is `||f(q)||`; right is phase using `Re(q)` versus `||Im(q)||`. | ![Quaternion identity magnitude surface](docs/images/identity-surface.png)<br>Height is `||f(q)||` over the same `Re(q)` and `||Im(q)||` grid. |
+
+### Quaternion tanh: `tanh(q)`
+
+| Slice domain coloring | Component panels |
+| --- | --- |
+| ![Quaternion tanh slice domain coloring](docs/images/quaternion-tanh-slice.png)<br>Hue changes with output phase; bright regions have larger `||tanh(q)||`. | ![Quaternion tanh component panels](docs/images/quaternion-tanh-components.png)<br>Shows which quaternion components are amplified, damped, or sign-flipped. |
+
+| Magnitude and phase | 3D magnitude surface |
+| --- | --- |
+| ![Quaternion tanh magnitude and phase panels](docs/images/quaternion-tanh-magnitude-phase.png)<br>Left shows saturation and poles in norm; right shows how phase bends. | ![Quaternion tanh magnitude surface](docs/images/quaternion-tanh-surface.png)<br>Peaks mark large `||tanh(q)||` values on the reduced quaternion grid. |
 
 ## Quaternion Activation Examples
 
@@ -80,6 +92,7 @@ def quaternion_cardioid(q):
     return 0.5 * (1.0 + scale)[..., None] * q
 
 
+hviz.plot_slice(hviz.quaternion_tanh, (-2.0, 2.0, 400), (-2.0, 2.0, 400))
 hviz.plot_slice(split_relu, (-3.0, 3.0, 400), (-3.0, 3.0, 400))
 hviz.plot_magnitude_phase(quaternion_cardioid, (-3.0, 3.0, 240), (0.0, 3.0, 240))
 hviz.plot_surface(quaternion_cardioid, (-3.0, 3.0, 120), (0.0, 3.0, 120))
