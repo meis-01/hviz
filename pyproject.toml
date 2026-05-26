@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hviz"
+version = "0.1.0"
+description = "Quaternion activation visualization with HoloViews, Bokeh, and Plotly."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+  { name = "hviz contributors" },
+]
+keywords = ["quaternions", "activation-functions", "holoviews", "bokeh", "plotly"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Scientific/Engineering :: Visualization",
+]
+dependencies = [
+  "bokeh>=3.4",
+  "holoviews>=1.18",
+  "numpy>=1.24",
+  "plotly>=5.20",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8",
+]
+
+[project.urls]
+Homepage = "https://github.com/meis-01/hviz"
+Issues = "https://github.com/meis-01/hviz/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/hviz"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q -p no:cacheprovider"
+pythonpath = ["src"]
