@@ -54,23 +54,55 @@ python examples/gallery.py
 
 ### Identity: `q`
 
-| Slice domain coloring | Component panels |
-| --- | --- |
-| ![Quaternion identity slice domain coloring](docs/images/identity-slice.png)<br>Hue is output phase on the selected slice; brightness and rings show output norm. | ![Quaternion identity component panels](docs/images/identity-components.png)<br>Each panel is one output component; blue is negative, white is zero, red is positive. |
+#### Slice Domain Coloring
 
-| Magnitude and phase | 3D magnitude surface |
-| --- | --- |
-| ![Quaternion identity magnitude and phase panels](docs/images/identity-magnitude-phase.png)<br>Left is `||f(q)||`; right is phase using `Re(q)` versus `||Im(q)||`. | ![Quaternion identity magnitude surface](docs/images/identity-surface.png)<br>Height is `||f(q)||` over the same `Re(q)` and `||Im(q)||` grid. |
+<img src="docs/images/identity-slice.png" alt="Quaternion identity slice domain coloring" width="420">
+
+Hue is output phase on the selected slice; brightness and rings show output norm.
+
+#### Component Panels
+
+<img src="docs/images/identity-components.png" alt="Quaternion identity component panels" width="420">
+
+Each panel is one output component; blue is negative, white is zero, red is positive.
+
+#### Magnitude And Phase
+
+<img src="docs/images/identity-magnitude-phase.png" alt="Quaternion identity magnitude and phase panels" width="520">
+
+Left shows output norm. Right shows phase using real input versus imaginary-input norm.
+
+#### 3D Magnitude Surface
+
+<img src="docs/images/identity-surface.png" alt="Quaternion identity magnitude surface" width="520">
+
+Height is output norm over the same real-input and imaginary-input-norm grid.
 
 ### Quaternion tanh: `tanh(q)`
 
-| Slice domain coloring | Component panels |
-| --- | --- |
-| ![Quaternion tanh slice domain coloring](docs/images/quaternion-tanh-slice.png)<br>Hue changes with output phase; bright regions have larger `||tanh(q)||`. | ![Quaternion tanh component panels](docs/images/quaternion-tanh-components.png)<br>Shows which quaternion components are amplified, damped, or sign-flipped. |
+#### Slice Domain Coloring
 
-| Magnitude and phase | 3D magnitude surface |
-| --- | --- |
-| ![Quaternion tanh magnitude and phase panels](docs/images/quaternion-tanh-magnitude-phase.png)<br>Left shows saturation and poles in norm; right shows how phase bends. | ![Quaternion tanh magnitude surface](docs/images/quaternion-tanh-surface.png)<br>Peaks mark large `||tanh(q)||` values on the reduced quaternion grid. |
+<img src="docs/images/quaternion-tanh-slice.png" alt="Quaternion tanh slice domain coloring" width="420">
+
+Hue changes with output phase; brighter regions have larger output norm.
+
+#### Component Panels
+
+<img src="docs/images/quaternion-tanh-components.png" alt="Quaternion tanh component panels" width="420">
+
+Shows which quaternion components are amplified, damped, or sign-flipped.
+
+#### Magnitude And Phase
+
+<img src="docs/images/quaternion-tanh-magnitude-phase.png" alt="Quaternion tanh magnitude and phase panels" width="520">
+
+Left shows saturation and poles in norm. Right shows how phase bends.
+
+#### 3D Magnitude Surface
+
+<img src="docs/images/quaternion-tanh-surface.png" alt="Quaternion tanh magnitude surface" width="520">
+
+Peaks mark large output-norm values on the reduced quaternion grid.
 
 ## Quaternion Activation Examples
 

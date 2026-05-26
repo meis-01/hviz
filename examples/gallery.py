@@ -174,7 +174,8 @@ def render_surface_image(example: DemoExample) -> NDArray[np.uint8]:
     )
     x, y = np.meshgrid(grid.real, grid.imag_norm)
     z = hviz.quaternion_norm(grid.values)
-    return point_surface_thumbnail(x, y, z, width=720, height=520)
+    image = point_surface_thumbnail(x, y, z, width=720, height=520)
+    return trim_white_border(image, padding=28)
 
 
 def _resample_range(axis_range: tuple[float, float, int], count: int) -> tuple[float, float, int]:
@@ -249,6 +250,19 @@ def point_surface_thumbnail(
     for index in order:
         draw_disc(image, int(flat_x[index]), int(flat_y[index]), 2, flat_colors[index])
     return image
+
+
+def trim_white_border(image: NDArray[np.uint8], *, padding: int) -> NDArray[np.uint8]:
+    mask = np.any(image < 250, axis=-1)
+    if not np.any(mask):
+        return image
+    rows = np.where(np.any(mask, axis=1))[0]
+    cols = np.where(np.any(mask, axis=0))[0]
+    top = max(0, int(rows[0]) - padding)
+    bottom = min(image.shape[0], int(rows[-1]) + padding + 1)
+    left = max(0, int(cols[0]) - padding)
+    right = min(image.shape[1], int(cols[-1]) + padding + 1)
+    return image[top:bottom, left:right]
 
 
 def draw_disc(image: NDArray[np.uint8], cx: int, cy: int, radius: int, color: NDArray[np.uint8]) -> None:
